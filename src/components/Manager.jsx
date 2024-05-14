@@ -4,6 +4,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { FaCopy } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { AiOutlineFileSearch } from "react-icons/ai";
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -36,29 +37,59 @@ const Manager = () => {
   }
 
   //to copy the text
-  const copyText = ()=>{
-    alert('Need to implement Copy function')
+  const copyText = (text)=>{
+    // alert('Need to implement Copy function')
+    toast('Copied Successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      
+    });
+    navigator.clipboard.writeText(text) //this is the main code
   }
 
   //edit password
-  const editPassword = ()=>{
-    alert('Need to implement Edit function')
+  const editPassword = (id)=>{
+    // alert('Need to implement Edit function')
+    Setform(passwordArray.filter(i=>i.id === id)[0])
+    SetpasswordArray(passwordArray.filter(items=>items.id!=id))
   }
   //delete password
-  const deletePassword = ()=>{
-    alert('Need to implement Delete function')
+  const deletePassword = (id)=>{
+    // alert('Need to implement Delete function')
+    let c = confirm('Are you sure to delete this password?')
+    if(c){
+      SetpasswordArray(passwordArray.filter(items=>items.id!=id))
+      localStorage.setItem("password", JSON.stringify(passwordArray.filter(items=>items.id!=id)))
+    }
+    toast.success('Delete Successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      
+    });
   }
 
   const savePassword = ()=>{
     if(form.site.length>3 && form.username.length>3 && form.password.length>3){
       console.log(form)
-      SetpasswordArray(...passwordArray, {...form, id:uuidv4()})
+      SetpasswordArray([...passwordArray, {...form, id:uuidv4()}])
       //now i save my all details in localStorage
       localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id:uuidv4()}]))
       // console.log([...passwordArray, form])
       Setform({site:"", username:"", password:""})  //when my all details are saved i reset my form
 
-      toast.success('Password Save!', {
+      toast.success('Password Save', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -84,21 +115,21 @@ const Manager = () => {
   return (
     <>
 
-    <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition="Bounce"
-      />
-      
-      <ToastContainer />
+        <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition="Bounce"
+              />
+              {/* Same as */}
+        <ToastContainer />
 
         {/* This is the BackGround theam */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
@@ -107,7 +138,7 @@ const Manager = () => {
 
 
        {/* <!-- main container --> */}
-      <div className="p-2 md:mycontainer ">
+      <div className="p-2  md:mycontainer">
             <h1 className="text-4xl text-center font-bold">
                 <span className='text-green-500'>&lt;</span>
                 Pass
@@ -169,8 +200,9 @@ const Manager = () => {
 
 
             {/* Show all the password as a table here */}
-            <div className="password">
-              <h2 className="text-center text-2xl py-5 font-bold">Your Passwords</h2>
+            <div className="passwords">
+              <h2 className="text-center text-2xl py-5 font-bold ">Your Passwords</h2>
+              {passwordArray.length == 0 && <div className=" flex justify-center font-bold text-md pt-14"> <AiOutlineFileSearch size={100} /> </div>}
 
                {/* If password length is't 0 create the table and show the info */}
                 {passwordArray.length!= 0 && (
@@ -192,9 +224,9 @@ const Manager = () => {
                     {passwordArray.map((items, index) => {
                       return(
                         <tr key={index}>
-                          <td className="text-center border py-2">
+                          <td className="text-center border border-black py-2">
                             <div className="flex items-center justify-center gap-2">
-                              <a target="_blank" href={items.site}>{items.site}</a>
+                              <a className="cursor-pointer" target="_blank" href={items.site}>{items.site}</a>
                               <div 
                               className="size-7 cursor-pointer"
                               onClick={()=>{
@@ -207,7 +239,7 @@ const Manager = () => {
                           </td>
 
                           {/* Second table info */}
-                            <td className="text-center border py-2">
+                            <td className="text-center border border-black py-2">
                               <div className="flex items-center justify-center gap-2">
                                 {items.username}
                                 <div 
@@ -222,7 +254,7 @@ const Manager = () => {
                             </td>
 
                           {/* Third table info */}
-                            <td className="text-center border py-2">
+                            <td className="text-center border border-black py-2">
                               <div className="flex items-center justify-center gap-2">
                                 {items.password}
                                 <div 
@@ -237,7 +269,7 @@ const Manager = () => {
                             </td>
 
                             {/* Actions */}
-                            <td className=" flex justify-center text-center py-2 border">
+                            <td className="flex justify-center text-center py-2 border border-black pb-3">
                                 <span
                                   className="text-center mx-1 cursor-pointer"
                                   onClick={()=>{
