@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RiApps2AddFill } from "react-icons/ri";
 import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
 import { FaCopy } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -30,9 +31,18 @@ const Manager = () => {
     Setform({ ...form, [e.target.name]: e.target.value });
   };
 
+
   //to show the password
-  const showPassword = (e) => {
-    alert("Need to implement the function");
+  const [passwordData, setpasswordData] = useState('')
+  const [visiblePassword, setvisiblePassword] = useState(false)
+
+  const handleInput = (e)=>{
+    setpasswordData(e.target.value)
+  }
+
+  const handleShowPassword = () => {
+    // alert("Need to implement the function");
+    setvisiblePassword(!visiblePassword)
   };
 
   //to copy the text
@@ -80,7 +90,7 @@ const Manager = () => {
 
       toast.success("Saved Successfully!");
     } else {
-      toast.error("Password Required!");
+      toast.error("All fields are required!");
     }
   };
 
@@ -93,7 +103,7 @@ const Manager = () => {
 
       {/* <!-- main container --> */}
 
-      <div className="p-2 mt-10 md:mycontainer md:mt-0">
+      <div className="p-2 mt-5 md:mycontainer md:mt-0">
         <h1 className="text-4xl text-center font-bold">
           <span className="text-green-500">&lt;</span>
           Pass
@@ -125,7 +135,7 @@ const Manager = () => {
 
             <div className="flex relative">
               <input
-                type="password"
+                type= {visiblePassword ? "text" :"password"}
                 className="w-full px-4 py-2 border outline-none border-black rounded-full"
                 placeholder="Enter Password"
                 value={form.password}
@@ -133,7 +143,14 @@ const Manager = () => {
                 name="password"
               />
               <span className="absolute right-[5px] top-[11px] cursor-pointer">
-                <IoEyeOutline onClick={showPassword} size={18} />
+                {/* <IoEyeOutline onClick={showPassword} size={18} /> */}
+                {
+                  visiblePassword ? (
+                  <IoEyeOutline onClick={handleShowPassword} size={18} />
+                  ):(
+                    <IoEyeOffOutline onClick={handleShowPassword} size={18} />
+                  )
+                }
               </span>
             </div>
           </div>
