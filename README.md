@@ -1,6 +1,6 @@
 #  Password Manager 🚀
 
-SecurePass is a password management tool designed to securely store and manage your sensitive credentials.
+PassOP is a password management tool designed to securely store and manage your sensitive credentials as a website.
 
 ## Features
 
@@ -12,12 +12,15 @@ SecurePass is a password management tool designed to securely store and manage y
 
 ## 👉 [**Visit Now**](https://passop-debu.netlify.app/)
 
-![Image](https://raw.githubusercontent.com/debapriyo007/Password-Manager/main/src/assets/Demo-Picture/PasswordManager.png)
+![Image](https://raw.githubusercontent.com/debapriyo007/Password-Manager/main/src/assets/Demo-Picture/ScreenShortV0.1.png)
 
 
-## Installation
+## Technologies Used
+    - React
+    - Tailwind CSS
+    - Node Js
 
-To use SecurePass, simply download the repository and run the application.
+
 
 ## Usage
 
@@ -31,7 +34,5 @@ To use SecurePass, simply download the repository and run the application.
 
 Contributions are welcome! If you'd like to contribute to SecurePass, please fork the repository and submit a pull request.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
