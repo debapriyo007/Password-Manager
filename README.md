@@ -35,7 +35,7 @@ PassOP is a password management tool designed to securely store and manage your 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/debapriyo007/PassOp
+   git clone https://github.com/debapriyo007/Password-Manager
 
 ## Contributing
 
