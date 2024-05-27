@@ -1,4 +1,5 @@
 
+import { Toaster } from 'react-hot-toast'
 import './App.css'
 import Footer from './components/Footer'
 import Manager from './components/Manager'
@@ -16,6 +17,7 @@ function App() {
         <Navbar/>
         <Manager/>
         <Footer/>
+        <Toaster  />
     </>
   )
 }

@@ -7,7 +7,8 @@ import { MdDelete } from "react-icons/md";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import toast from "react-hot-toast";
+// import { ToastContainer, toast } from 'react-toastify';
 
 const Manager = () => {
 
@@ -39,17 +40,7 @@ const Manager = () => {
   //to copy the text
   const copyText = (text)=>{
     // alert('Need to implement Copy function')
-    toast('Copied Successfully', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      
-    });
+    toast.success('Copied Successfully!');
     navigator.clipboard.writeText(text) //this is the main code
   }
 
@@ -67,42 +58,24 @@ const Manager = () => {
       SetpasswordArray(passwordArray.filter(items=>items.id!=id))
       localStorage.setItem("password", JSON.stringify(passwordArray.filter(items=>items.id!=id)))
     }
-    toast.success('Delete Successfully', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      
-    });
+    toast.success('Deleted Successfully!');
+    
   }
 
   const savePassword = ()=>{
     if(form.site.length>3 && form.username.length>3 && form.password.length>3){
-      console.log(form)
+      // console.log(form)
       SetpasswordArray([...passwordArray, {...form, id:uuidv4()}])
       //now i save my all details in localStorage
       localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id:uuidv4()}]))
       // console.log([...passwordArray, form])
       Setform({site:"", username:"", password:""})  //when my all details are saved i reset my form
 
-      toast.success('Password Save', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        
-      });
+      toast.success('Saved Successfully!');
+
     }else{
       toast.error('Password Required!', 
-        {theme: "dark",}
+      
       )
     }
   }
@@ -115,21 +88,7 @@ const Manager = () => {
   return (
     <>
 
-        <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                transition="Bounce"
-              />
-              {/* Same as */}
-        <ToastContainer />
+        
 
         {/* This is the BackGround theam */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
@@ -138,7 +97,7 @@ const Manager = () => {
 
 
        {/* <!-- main container --> */}
-      <div className="p-2  md:mycontainer">
+      <div className="p-2  md:mycontainer ">
             <h1 className="text-4xl text-center font-bold">
                 <span className='text-green-500'>&lt;</span>
                 Pass
@@ -269,7 +228,8 @@ const Manager = () => {
                             </td>
 
                             {/* Actions */}
-                            <td className="flex justify-center text-center py-2 border border-black pb-3">
+                            <td className="text-center  border border-black py-2">
+                                <div className="flex items-center justify-center gap-2">
                                 <span
                                   className="text-center mx-1 cursor-pointer"
                                   onClick={()=>{
@@ -288,6 +248,7 @@ const Manager = () => {
                                 >
                                  <MdDelete size={23} />
                                 </span>
+                                </div>
                             </td>
                         </tr>
                       )
