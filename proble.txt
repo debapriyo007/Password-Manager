@@ -1,0 +1,7 @@
+- Till now i faced Problem ....
+
+
+  ✅ I faced a problem reguarding REACT TOASTIFY. (I successfully fixed that bug)
+
+  ❗️ When someone enter a big url the table is goona overflow . THIS IS HAPPEN ONLY IN 
+   MOBILE DEVICES (This is still a problem)
