@@ -12,7 +12,7 @@ PassOP is a password management tool designed to securely store and manage your 
 
 ## 👉 [**Visit Now**](https://passop-debu.netlify.app/)
 
-![Image](https://raw.githubusercontent.com/debapriyo007/Password-Manager/main/src/assets/Demo-Picture/ScreenShortV0.1.png)
+![Image](https://raw.githubusercontent.com/debapriyo007/Password-Manager/main/src/assets/Demo-Picture/demo_SC_V0.2.png)
 
 
 ## Technologies Used
@@ -20,15 +20,22 @@ PassOP is a password management tool designed to securely store and manage your 
     - Tailwind CSS
     - Node Js
 
-
-
 ## Usage
 
-1. Launch the application.
-2. Sign up for an account or log in if you already have one.
-3. Add your passwords to the vault.
-4. Use the password generator for new passwords.
-5. Access your passwords whenever you need them.
+1. **Add Credentials:**
+   - Click on the "Add" button to insert a new entry.
+   - Enter the website URL, username, and password.
+   - Click "Save" to store the credentials securely.
+
+2. **View and Manage Credentials:**
+   - All stored credentials are displayed in a list format.
+   - Edit or delete existing entries as needed.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/debapriyo007/PassOp
 
 ## Contributing
 
