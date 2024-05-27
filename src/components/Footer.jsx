@@ -11,7 +11,9 @@ const Footer = () => {
     </div>
 
 
-    <div className=" text-sm flex justify-center items-center">Create with ❤️ by Debu</div>
+    <div className=" text-sm flex justify-center items-center font-thin">Create with 
+    <img  width={20} src="https://cdn-icons-png.freepik.com/512/9336/9336195.png" alt="Love_Img" />
+     by Debu</div>
   </div>
   )
 }
