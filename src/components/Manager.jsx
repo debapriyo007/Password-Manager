@@ -176,6 +176,9 @@ const Manager = () => {
             </div>
           )}
 
+          <div className="overflow-x-auto ">
+
+          
           {/* If password length is't 0 create the table and show the info */}
           {passwordArray.length != 0 && (
             <table className="table-auto w-full rounded-md overflow-hidden mb-10">
@@ -272,6 +275,7 @@ const Manager = () => {
               </tbody>
             </table>
           )}
+          </div>
         </div>
       </div>
     </>
