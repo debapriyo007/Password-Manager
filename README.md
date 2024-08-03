@@ -12,7 +12,7 @@ PassOP is a password management tool designed to securely store and manage your 
 
 ## 👉 [**Visit Now**](https://passop-debu.netlify.app/)
 
-![Image](https://raw.githubusercontent.com/debapriyo007/Password-Manager/main/src/assets/Demo-Picture/demo_SC_V0.2.png)
+![Image](https://raw.githubusercontent.com/debapriyo007/Password-Manager/main/src/assets/Demo-Picture/latestPic.png)
 
 
 ## Technologies Used
