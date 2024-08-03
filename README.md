@@ -4,8 +4,7 @@ PassOP is a password management tool designed to securely store and manage your 
 
 ## Features
 
-- Securely store your passwords.
-- Generate strong and unique passwords.
+- Store your passwords.
 - Access your passwords from anywhere.
 - User-friendly interface for easy password management.
 
