@@ -94,6 +94,22 @@ const Manager = () => {
     }
   };
 
+  const maskPassword = (password) => {
+    let maskedPassword = "";
+    for (let i = 0; i < password.length; i++) {
+      maskedPassword += '•';
+    }
+    return maskedPassword;
+    // return '•'.repeat(password.length);
+  }
+
+  // const maskPassword = (password) => {
+  //   if (password.length <= 1) {
+  //     return password; // If the password has only one character, show it as is.
+  //   }
+  //   return password[0] + '•'.repeat(password.length - 1);
+  // };
+
   return (
     <>
       {/* This is the BackGround theam */}
@@ -115,7 +131,7 @@ const Manager = () => {
         <div className="flex flex-col p-4 items-center gap-8 text-black">
           {/* My first Input tag */}
           <input
-            className="w-full px-4 py-2 border outline-none border-black rounded-full"
+            className="w-full px-4 py-2 border outline-none border-black rounded-md"
             type="text"
             placeholder="Enter the website URL"
             value={form.site}
@@ -127,7 +143,7 @@ const Manager = () => {
             <input
               type="text"
               placeholder="Enter website Username"
-              className="w-full px-4 py-2 border outline-none border-black rounded-full"
+              className="w-full px-4 py-2 border outline-none border-black rounded-md"
               value={form.username}
               onChange={handleChange}
               name="username"
@@ -136,7 +152,7 @@ const Manager = () => {
             <div className="flex relative">
               <input
                 type= {visiblePassword ? "text" :"password"}
-                className="w-full px-4 py-2 border outline-none border-black rounded-full"
+                className="w-full px-4 py-2 border outline-none border-black rounded-md"
                 placeholder="Enter Password"
                 value={form.password}
                 onChange={handleChange}
@@ -156,7 +172,7 @@ const Manager = () => {
           </div>
 
           <button
-            className="flex justify-center items-center bg-green-400 rounded-full px-7 py-3 w-fit hover:bg-green-300 gap-2 border border-green-900"
+            className="flex justify-center items-center bg-green-400 rounded-md px-7 py-3 w-fit hover:bg-green-300 gap-2 border border-green-900"
             onClick={savePassword}
           >
             <RiApps2AddFill size={23} />
@@ -235,7 +251,7 @@ const Manager = () => {
                       {/* Third table info */}
                       <td className="text-center border  py-2">
                         <div className="flex items-center justify-center gap-2">
-                          {items.password}
+                          {maskPassword (items.password)}
                           <div
                             className="size-7 cursor-pointer"
                             onClick={() => {
@@ -276,6 +292,21 @@ const Manager = () => {
             </table>
           )}
           </div>
+          {/* <button
+            className="flex justify-center items-center bg-green-400 rounded-md px-5 py-1.5 w-fit hover:bg-green-300 gap-2 border border-green-900"
+            onClick={savePassword}
+          >
+           
+            Edit
+          </button>
+          <button
+            className="flex justify-center items-center bg-green-400 rounded-md px-5 py-1.5 w-fit hover:bg-green-300 gap-2 border border-green-900"
+            onClick={savePassword}
+          >
+           
+            Delete
+          </button> */}
+          
         </div>
       </div>
     </>
